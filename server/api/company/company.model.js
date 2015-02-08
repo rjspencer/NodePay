@@ -3,11 +3,12 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var EmployeeSchema = new Schema({
+var CompanySchema = new Schema({
   name: String,
   info: String,
   addresses: [{
     name:     String,
+    primary:  Boolean,
     street1:  String,
     street2:  String,
     city:     String,
@@ -16,14 +17,10 @@ var EmployeeSchema = new Schema({
   }],
   phones: [{
     name:   String,
+    primary:  Boolean,
     number: String
   }],
-  startDate:     Date,
-  endDate:      Date,
-  active:       Boolean,
-  exemptions:   Number,
-  filingStatus: String,
-  companyId:    Schema.ObjectId,
+  active: Boolean
 });
 
-module.exports = mongoose.model('Employee', EmployeeSchema);
+module.exports = mongoose.model('Company', CompanySchema);
